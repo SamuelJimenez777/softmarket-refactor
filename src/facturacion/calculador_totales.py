@@ -8,12 +8,17 @@ class CalculadorTotales:
         self.tasa_impuesto = tasa_impuesto
 
     def calcular(self, productos: list[dict]) -> float:
+        if not productos:
+            raise ValueError("La factura debe tener al menos un producto.")
+
         for producto in productos:
             precio = float(producto["precio"])
 
             if precio < 0:
                 raise ValueError("El precio no puede ser negativo.")
 
-        subtotal = sum(float(producto["precio"]) for producto in productos)
+        subtotal = sum(
+            float(producto["precio"]) for producto in productos
+        )
 
         return round(subtotal * (1 + self.tasa_impuesto), 2)
