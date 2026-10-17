@@ -22,4 +22,3 @@ class CalculadorTotales:
         )
 
         return round(subtotal * (1 + self.tasa_impuesto), 2)
-           

@@ -73,5 +73,13 @@ class TestFacturacion(unittest.TestCase):
             calculador.calcular([])
 
 
+    def test_rechaza_precios_negativos(self):
+        calculador = CalculadorTotales()
+        productos = [{"nombre": "Producto A", "precio": -10.0}]
+
+        with self.assertRaises(ValueError):
+            calculador.calcular(productos)
+
+      
 if __name__ == "__main__":
     unittest.main()
